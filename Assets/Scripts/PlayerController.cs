@@ -18,7 +18,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jump();   
+        Jump();
+        Slide();
+    }
+
+    void Slide()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isOnGround)
+        {
+            animator.SetTrigger("Slide");
+           
+        }
     }
     void Jump()
     {
@@ -36,7 +46,9 @@ public class PlayerController : MonoBehaviour
        else  if (collision.collider.CompareTag("obstacle"))
         {
             GameManager.Instance.isGameActive = false;
-            
+            gameObject.transform.Translate(new Vector3(0, 0, -.5f));
+            animator.SetTrigger("Die");
+
         }
     }
 
