@@ -32,10 +32,11 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space)&&isOnGround)
+        if(Input.GetKeyDown(KeyCode.Space)&&isOnGround&& GameManager.Instance.isGameActive)
         {
             animator.SetTrigger("Jump");
-            playerRB.AddForce(Vector3.up*5, ForceMode.Impulse);
+           // animator.Get
+            playerRB.AddForce(Vector3.up*5.5f, ForceMode.Impulse);
             isOnGround = false;
         }
     }

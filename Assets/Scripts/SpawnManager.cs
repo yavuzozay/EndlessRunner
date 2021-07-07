@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     private Vector3 spawnPos = new Vector3(17, 0.5f, 1.5f);
     private float startDelay=1.2f;
     private float repeatDelay=2f;
+    int random;
 
     
     void Start()
@@ -21,14 +22,25 @@ public class SpawnManager : MonoBehaviour
     {
         if (!GameManager.Instance.isGameActive)
             CancelInvoke("SpawnObstacle");
+        
+
+        
+        
     }
 
   
     void SpawnObstacle()
     {
-    // GameObject tempObstacle;
+        // GameObject tempObstacle;
 
-         Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+        random = Random.RandomRange(0, 2);
+        Debug.Log(random);
+        switch (random)
+        {
+            case 0: spawnPos = new Vector3(17, 0.5f, 1.5f); break;
+            case 1: spawnPos= new Vector3(17, 1.3f, 1.5f); break;
+        }
+        Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
       //  tempObstacle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
 

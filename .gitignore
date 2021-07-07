@@ -7,6 +7,7 @@
 Logs
 [Pp]ackages/
 Assets/AssetStoreTools*
+[Aa]ssets/Sounds
 
 # Visual Studio cache directory
 .vs/
