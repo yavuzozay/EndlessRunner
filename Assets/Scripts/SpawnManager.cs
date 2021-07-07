@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
         switch (random)
         {
             case 0: spawnPos = new Vector3(17, 0.5f, 1.5f); break;
-            case 1: spawnPos= new Vector3(17, 1.3f, 1.5f); break;
+            case 1: spawnPos= new Vector3(17, 1.4f, 1.5f); break;
         }
         Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
       //  tempObstacle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
