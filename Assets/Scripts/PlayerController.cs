@@ -23,28 +23,46 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jump();
-        Slide();
-        if (!GameManager.Instance.isGameActive)
-            dirtParticle.Stop();
+        Debug.Log(animator.HasState(1,1));
+
+        if (GameManager.Instance.isGameActive)
+        { Jump();
+        Slide(); }
+        else
+        {
+            dirtParticle.Stop(); 
+        }
     }
 
     void Slide()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && isOnGround)
         {
-            animator.SetTrigger("Slide");
-            //dirtParticle.Stop();
-          
            
+            animator.SetBool("isSliding", true);
+            StartCoroutine(waitSlide());
+            
+            
+            //dirtParticle.Stop();
+
+
         }
+      /*  if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            animator.SetBool("isSliding", false);
+        }*/
+            
+       
+          
+
     }
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space)&&isOnGround&& GameManager.Instance.isGameActive)
+        if(Input.GetKeyDown(KeyCode.Space)&&isOnGround&& !animator.GetBool("isSliding") )
         {
             playerAudio.PlayOneShot(jumpClip,1.0f);
             animator.SetTrigger("Jump");
+           
             dirtParticle.Stop();
            // animator.Get
             playerRB.AddForce(Vector3.up*5.5f, ForceMode.Impulse);
@@ -69,4 +87,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator waitSlide()
+    {
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("isSliding", false);
+
+    }
+  
+   
 }
