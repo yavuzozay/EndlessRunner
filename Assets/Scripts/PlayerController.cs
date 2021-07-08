@@ -23,16 +23,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(animator.HasState(1,1));
+       // Debug.Log(animator.HasState(1,1));
 
         if (GameManager.Instance.isGameActive)
         { Jump();
         Slide(); }
         else
         {
-            dirtParticle.Stop(); 
+            dirtParticle.Stop();
+            StartCoroutine(GameEnd());
         }
     }
+   
 
     void Slide()
     {
@@ -83,10 +85,15 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.Translate(new Vector3(0, 0, -.5f));
             animator.SetTrigger("Die");
             explosionParticle.Play();
+            
 
         }
     }
-
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(4f);
+        Loader.Instance.LoadResScene();
+    }
     IEnumerator waitSlide()
     {
         yield return new WaitForSeconds(1f);
