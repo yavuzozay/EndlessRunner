@@ -9,7 +9,9 @@ public class GameManager : MonoSingleton<GameManager>
    // public int level;
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         isGameActive = true; 
+
     }
         
    

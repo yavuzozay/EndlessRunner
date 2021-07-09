@@ -8,9 +8,11 @@ public class GameMenuSc : MonoBehaviour
     [SerializeField] private Text scoreText;
     private bool GameIsPaused;
     [SerializeField] private GameObject pauseMenuUI;
+    AudioSource music;
     void Awake()
     {
-        Resume();
+        //increase optimization
+       
     }
     void Update()
     {
@@ -24,15 +26,16 @@ public class GameMenuSc : MonoBehaviour
     }
   void FixedUpdate()
     {
-      
         scoreText.text = "score : "+GameManager.Instance.score.ToString();
     }
     void Resume()
     {
 
         pauseMenuUI.SetActive(false);
+        BackGroundMusic.Instance.ResumeMusic();
         Time.timeScale = 1f;
         GameIsPaused = false;
+
       //  GameManager.Instance.isGameActive = true;
 
     }
@@ -40,6 +43,7 @@ public class GameMenuSc : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        BackGroundMusic.Instance.PauseMusic();
         GameIsPaused = true;
      //   GameManager.Instance.isGameActive = false;
     }

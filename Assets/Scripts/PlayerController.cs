@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
     public AudioClip jumpClip;
+    public AudioClip failureClip;
+    public AudioClip slideClip;
     bool isOnGround;
     public bool gameOver;
     private void Awake()
@@ -42,7 +44,10 @@ public class PlayerController : MonoBehaviour
         {
            
             animator.SetBool("isSliding", true);
+            playerAudio.PlayOneShot(slideClip, 1.2f);
+
             StartCoroutine(waitSlide());
+
             
             
             //dirtParticle.Stop();
@@ -62,11 +67,11 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space)&&isOnGround&& !animator.GetBool("isSliding") )
         {
-            playerAudio.PlayOneShot(jumpClip,1.0f);
             animator.SetTrigger("Jump");
            
             dirtParticle.Stop();
-           // animator.Get
+            playerAudio.PlayOneShot(jumpClip, 1.0f);
+
             playerRB.AddForce(Vector3.up*5.5f, ForceMode.Impulse);
             isOnGround = false;
         }
@@ -81,6 +86,8 @@ public class PlayerController : MonoBehaviour
         else  if (collision.collider.CompareTag("obstacle"))
         {
             dirtParticle.Stop();
+            playerAudio.PlayOneShot(failureClip, 1.0f);
+
             GameManager.Instance.isGameActive = false;
             gameObject.transform.Translate(new Vector3(0, 0, -.5f));
             animator.SetTrigger("Die");
@@ -91,7 +98,10 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator GameEnd()
     {
+
+        BackGroundMusic.Instance.PauseMusic();
         yield return new WaitForSeconds(4f);
+
         Loader.Instance.LoadResScene();
     }
     IEnumerator waitSlide()

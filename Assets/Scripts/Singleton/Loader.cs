@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Loader : MonoSingleton<Loader>
 {
 
-    public int result;
+   
    void Load(int sceneInd)
     {
         SceneManager.LoadScene(sceneInd);
@@ -22,7 +22,7 @@ public class Loader : MonoSingleton<Loader>
     }
   public  void LoadResScene()
     {
-        result = GameManager.Instance.score;
+       
         Load(2);
     }
    
