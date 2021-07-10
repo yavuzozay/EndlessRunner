@@ -33,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     {
         // GameObject tempObstacle;
 
-        random = Random.RandomRange(0, 2);
+        random = Random.RandomRange(0,2);
         Debug.Log(random);
         switch (random)
         {

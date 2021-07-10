@@ -12,12 +12,14 @@ public class Loader : MonoSingleton<Loader>
         SceneManager.LoadScene(sceneInd);
 
     }
-    void LoadMainMenu()
+    public void LoadMainMenu()
     {
         Load(0);
     }
-    void LoadGameMenu()
+    public void LoadGameMenu()
     {
+        GameManager.Instance.isGameActive = true;
+        GameManager.Instance.score = 0;
         Load(1);
     }
   public  void LoadResScene()

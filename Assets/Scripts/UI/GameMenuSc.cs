@@ -11,8 +11,9 @@ public class GameMenuSc : MonoBehaviour
     AudioSource music;
     void Awake()
     {
-        //increase optimization
-       
+        pauseMenuUI.SetActive(false);
+        GameManager.Instance.score = 0;
+
     }
     void Update()
     {
@@ -28,7 +29,7 @@ public class GameMenuSc : MonoBehaviour
     {
         scoreText.text = "score : "+GameManager.Instance.score.ToString();
     }
-    void Resume()
+   public void Resume()
     {
 
         pauseMenuUI.SetActive(false);

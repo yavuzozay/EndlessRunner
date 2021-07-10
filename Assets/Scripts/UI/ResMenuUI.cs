@@ -5,14 +5,19 @@ using UnityEngine.UI;
 public class ResMenuUI : MonoBehaviour
 {
     [SerializeField]  Text scoreTxt;
+    
 
     private void Awake()
     {
+ 
         scoreTxt.text = "Score : " + GameManager.Instance.score.ToString();
 
     }
-    // Update is called once per frame
-    void Update()
+
+  public void GoToGameScene()
     {
+        Loader.Instance.LoadGameMenu();
+
     }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoSingleton<GameManager>
 {
    public bool isGameActive;
-    public int score;
+    public float score;
    // public int level;
     private void Awake()
     {
@@ -21,9 +21,12 @@ public class GameManager : MonoSingleton<GameManager>
     }
    private void ScoreControl()
     {
-        if(isGameActive)
-            score = (int)(Time.time*2);
-        //score=(int)(Time.time*level);
+        if (isGameActive)
+            score += (Time.deltaTime*2);
+
+        Debug.Log(Time.deltaTime);
+        
+       
 
 
     }
