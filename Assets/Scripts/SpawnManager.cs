@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obstaclePrefab;
-    private Vector3 spawnPos = new Vector3(17, 0.5f, 1.5f);
-    private float startDelay=1.2f;
+    private Vector3 spawnPos = new Vector3(25, 0.5f, 1.5f);
+    private float startDelay=0f;
     private float repeatDelay=2f;
     int random;
 
@@ -37,8 +37,8 @@ public class SpawnManager : MonoBehaviour
         Debug.Log(random);
         switch (random)
         {
-            case 0: spawnPos = new Vector3(17, 0.5f, 1.5f); break;
-            case 1: spawnPos= new Vector3(17, 1.5f, 1.5f); break;
+            case 0: spawnPos = new Vector3(25, 0.5f, 1.5f); break;
+            case 1: spawnPos= new Vector3(25, 1.5f, 1.5f); break;
         }
         Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
       //  tempObstacle.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

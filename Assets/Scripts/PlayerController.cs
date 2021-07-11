@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Slide()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isOnGround)
+        if ((Input.GetKeyDown(KeyCode.LeftControl)|| Input.GetKeyDown(KeyCode.DownArrow)) && isOnGround)
         {
            
             animator.SetBool("isSliding", true);
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space)&&isOnGround&& !animator.GetBool("isSliding") )
+        if((Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.UpArrow)) &&isOnGround&& !animator.GetBool("isSliding") )
         {
             animator.SetTrigger("Jump");
            
