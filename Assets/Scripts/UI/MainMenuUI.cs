@@ -5,15 +5,19 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject controlsPanel;
-  
-    void OpenControlsPanel()
+
+    private void Awake()
+    {
+        controlsPanel.SetActive(false); 
+    }
+   public void OpenControlsPanel()
     {
         controlsPanel.SetActive(true);
     }
 
-    void CloseContolsPanel()
+   public void CloseContolsPanel()
     {
-        controlsPanel.SetActive(true);
+        controlsPanel.SetActive(false);
 
     }
 

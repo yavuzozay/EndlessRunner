@@ -12,7 +12,8 @@ public class GameMenuSc : MonoBehaviour
     void Awake()
     {
         pauseMenuUI.SetActive(false);
-        GameManager.Instance.score = 0;
+       //GameManager.Instance.score = 0;
+        Time.timeScale = 1f;
 
     }
     void Update()
@@ -27,7 +28,7 @@ public class GameMenuSc : MonoBehaviour
     }
   void FixedUpdate()
     {
-        scoreText.text = "score : "+GameManager.Instance.score.ToString();
+        scoreText.text = "score : "+((int)(GameManager.Instance.score)).ToString();
     }
    public void Resume()
     {

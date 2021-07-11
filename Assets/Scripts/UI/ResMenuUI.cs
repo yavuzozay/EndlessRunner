@@ -10,14 +10,10 @@ public class ResMenuUI : MonoBehaviour
     private void Awake()
     {
  
-        scoreTxt.text = "Score : " + GameManager.Instance.score.ToString();
+        scoreTxt.text = "Score : " + ((int)(GameManager.Instance.score)).ToString();
 
     }
 
-  public void GoToGameScene()
-    {
-        Loader.Instance.LoadGameMenu();
-
-    }
+  
 
 }

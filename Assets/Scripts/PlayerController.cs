@@ -44,7 +44,9 @@ public class PlayerController : MonoBehaviour
         {
            
             animator.SetBool("isSliding", true);
-            playerAudio.PlayOneShot(slideClip, 1.2f);
+            if (!playerAudio.isPlaying)
+
+                playerAudio.PlayOneShot(slideClip, 1.2f);
 
             StartCoroutine(waitSlide());
 
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Jump");
            
             dirtParticle.Stop();
+            if(!playerAudio.isPlaying)
             playerAudio.PlayOneShot(jumpClip, 1.0f);
 
             playerRB.AddForce(Vector3.up*5.5f, ForceMode.Impulse);
@@ -86,10 +89,10 @@ public class PlayerController : MonoBehaviour
         else  if (collision.collider.CompareTag("obstacle"))
         {
             dirtParticle.Stop();
-            playerAudio.PlayOneShot(failureClip, 1.0f);
+           
 
             GameManager.Instance.isGameActive = false;
-            gameObject.transform.Translate(new Vector3(0, 0, -.5f));
+            gameObject.transform.Translate(new Vector3(0, 0, -.15f));
             animator.SetTrigger("Die");
             explosionParticle.Play();
             
@@ -100,7 +103,10 @@ public class PlayerController : MonoBehaviour
     {
 
         BackGroundMusic.Instance.PauseMusic();
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1.5f);
+        if (!playerAudio.isPlaying)
+            playerAudio.PlayOneShot(failureClip, 1.0f);
+        yield return new WaitForSeconds(2.2f);
 
         Loader.Instance.LoadResScene();
     }
