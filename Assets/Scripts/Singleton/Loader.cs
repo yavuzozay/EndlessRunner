@@ -15,6 +15,8 @@ public class Loader : MonoSingleton<Loader>
     public void LoadMainMenu()
     {
         Load(0);
+        GameManager.Instance.difficulty = 1f;
+
     }
     public void LoadGameMenu()
     {

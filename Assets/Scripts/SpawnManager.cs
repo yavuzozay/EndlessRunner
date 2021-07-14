@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
         // GameObject tempObstacle;
 
         random = Random.RandomRange(0,2);
-        Debug.Log(random);
+       
         switch (random)
         {
             case 0: spawnPos = new Vector3(25, 0.5f, 1.5f); break;

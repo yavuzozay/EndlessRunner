@@ -18,12 +18,15 @@ public class GameMenuSc : MonoBehaviour
     }
     void Update()
     {
+       // Debug.Log("dif:"+GameManager.Instance.difficulty);
         if (Input.GetKeyDown(KeyCode.Escape)&&GameManager.Instance.isGameActive)
         {
             if (GameIsPaused)
                 Resume();
             else
                 Pause();
+
+          
         }
     }
   void FixedUpdate()
@@ -41,6 +44,7 @@ public class GameMenuSc : MonoBehaviour
       //  GameManager.Instance.isGameActive = true;
 
     }
+   
     void Pause()
     {
         pauseMenuUI.SetActive(true);

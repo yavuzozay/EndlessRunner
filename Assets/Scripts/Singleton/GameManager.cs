@@ -6,12 +6,12 @@ public class GameManager : MonoSingleton<GameManager>
 {
    public bool isGameActive;
     public float score;
-   // public int level;
+    public float difficulty;
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        isGameActive = true; 
-
+        isGameActive = true;
+        difficulty = 1f;
     }
         
    
@@ -22,9 +22,9 @@ public class GameManager : MonoSingleton<GameManager>
    private void ScoreControl()
     {
         if (isGameActive)
-            score += (Time.deltaTime*2);
+            score += (Time.deltaTime*2.2f);
 
-        Debug.Log(Time.deltaTime);
+       
         
        
 

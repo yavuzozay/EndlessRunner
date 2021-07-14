@@ -1,8 +1,9 @@
 # EndlessRunner
  
-Endless Runner v1.1 published.<br/>
+Endless Runner v1.2 published.<br/>
  [Play](https://yavuzozay.itch.io/endless-runner) <br/><br/>
- v.1.1 ile ile tuşlar ve zorluk seviyesi düzenlendi.
+ v.1.2 ile;<br>
+ Yeni zorluk seviyeleri eklendi.<br>Oynanışı etkileyen sorunlar giderildi.
 
  ## Languages & Tools
 <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/unity/unity.png" width="50" height="50"  /> 
