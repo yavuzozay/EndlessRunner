@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
 
         if (GameManager.Instance.isGameActive)
         { Jump();
-        Slide(); }
+        Slide(); 
+        }
         else
         {
             dirtParticle.Stop();

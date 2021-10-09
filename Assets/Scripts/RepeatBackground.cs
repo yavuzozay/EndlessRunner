@@ -4,22 +4,38 @@ using UnityEngine;
 
 public class RepeatBackground : MonoBehaviour
 {
+
+    private BoxCollider2D boxCollider2D;
     private Vector3 startPos;
     private float repatWidth;
-    void Start()
+    private void Awake()
     {
         startPos = transform.position;
-        repatWidth = (GetComponent<BoxCollider>().size.x / (2 *transform.localScale.x));
+        boxCollider2D = GetComponent<BoxCollider2D>();
+       
+    }
+    private void Start()
+    {
+        repatWidth = boxCollider2D.size.x;
+       
+
+    }
+    private void Update()
+    {
+     
+    }
+    private void FixedUpdate()
+    {
+        if (transform.position.x < startPos.x - repatWidth)
+        {
+            transform.position = startPos;
+        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    /* void FixedUpdate()
+     {
+         GetComponent<Renderer>().material.mainTextureOffset = new Vector2((Time.time*3), 0f);
 
-        if (transform.position.x < startPos.x-repatWidth )
-        {
-            transform.position = startPos;
-
-        }
-    }
+     }*/
 }

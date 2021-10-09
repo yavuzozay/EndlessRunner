@@ -30,7 +30,7 @@ public class MoveLeft : MonoBehaviour
         {
                
             transform.Translate(Vector3.left * Time.deltaTime * speed * zorluk);
-            Debug.Log( speed*zorluk);
+           //Debug.Log( speed*zorluk);
 
         }
     }
